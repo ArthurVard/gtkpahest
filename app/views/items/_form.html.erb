@@ -1,0 +1,42 @@
+<%= form_for([@room, @item]) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <strong>Սենյակ</strong><br>
+     <%= f.collection_select(:room_id, Room.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <strong>Գույք</strong><br>
+     <%= f.collection_select(:asset_id, Asset.all, :id, :name, {prompt: "Ընտրե՛ք..."}) %>
+  </div>
+  <div class="field">
+      <strong>Կցել</strong><br>
+      <%= f.collection_select(:person_id, Person.all, :id, :firstName, {prompt: "Ընտրե՛ք..."}) %>
+    </div>
+  <div class="field">
+    <strong>Քանակ</strong><br>
+    <%= f.number_field :qanak %>
+  </div>
+
+ <div class="field">
+      <strong>Կոդ:</strong><br>
+
+      <%= f.text_field :code %>
+    </div>
+
+
+
+  <div class="actions">
+    <%= f.submit 'Հիշել', class: "btn btn-primary" %>
+  </div>
+<% end %>

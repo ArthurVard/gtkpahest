@@ -1,0 +1,27 @@
+<h1>Listing items of <%= @room_name %></h1>
+
+<table class="table  table-hover">
+  <thead>
+    <tr>
+      <th>Room</th>
+      <th>Asset</th>
+      <th>Qanak</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.room.name %></td>
+        <td><%= item.asset.name %></td>
+        <td><%= item.qanak %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

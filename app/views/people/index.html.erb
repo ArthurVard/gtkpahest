@@ -1,0 +1,42 @@
+<h1>Անձնակազմ</h1>
+<br>
+<%= link_to 'Նոր աշխատակից', new_person_path, class: "btn btn-primary" %>
+<br>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Անուն</th>
+      <th>Ազգանուն</th>
+      <th>Հայրանուն</th>
+      <th>Բջջայիններ</th>
+      <th>Քաղաքային</th>
+      <th>Email</th>
+      <th>Workemail</th>
+      <th>Ծննունդ</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.firstName %></td>
+        <td><%= person.lastName %></td>
+        <td><%= person.thirdName %></td>
+        <td><%= person.cellPhone1 + person.cellPhone2 %></td>
+        <td><%= person.cityPhone %></td>
+        <td><%= person.email %></td>
+        <td><%= person.workemail %></td>
+        <td><%= person.bdate %></td>
+        <td><%= link_to 'Մանրամասն', person %></td>
+        <td><%= link_to 'Խմբագրել', edit_person_path(person) %></td>
+        <td><%= link_to 'Ջնջել', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

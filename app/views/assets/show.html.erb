@@ -1,0 +1,47 @@
+
+<br>
+<br>
+<br>
+<header>
+	
+	<h1 style='display: inline'><strong><%= @asset.name %></strong></h1> <h3 style='display: inline'>գույքի բաշխվածությունը ըստ սենյակների</h3>
+	<footer>
+	<p>
+	  <%= @asset.note %>
+	</p>
+  <p>
+    Հաստատագրված քանակ: <string><%= @asset.amount %></strong>
+  </p>
+  <p>
+    Մնացորդ: <string><%= @asset.items_in_use_count %></strong>
+  </p>
+	</footer>
+
+</header>
+<br>
+<br>
+<table class="table  table-hover">
+  <thead>
+    <tr>
+      <th>Սենյակ</th>
+      <th>Քանակ</th>
+      
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.uniq{|a|a.id}.each do |room| %>
+      <tr>
+        <td><%= room.name %></td>
+        <td><%= room.itemcount(@asset.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+ 
+<%= link_to 'Խմբագրել', edit_asset_path(@asset), class: "btn btn-default" %>
+
+<%= link_to '<-', assets_path, class: "btn btn-default" %>

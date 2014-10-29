@@ -1,0 +1,14 @@
+<tr  id='item_<%= @item.id %>'>
+       
+        <td><%= item.asset.name %></td>
+        
+        <td><%= item.qanak %></td>
+         <td><%= item.state.name %></td>
+          <td><%= item.code %></td>
+         <td><%= item.person.firstName + ' ' + item.person.lastName %></td>
+        
+        <td><%= link_to 'Խմբագրել', edit_room_item_path(@room, item), class: "btn btn-default" %></td>
+        <td><%= link_to 'Ջնջել', [@room,item], remote: true, method: :delete, data: { confirm: 'Վահե՛, լավ մտածի...' }, class: "btn btn-danger" %></td>
+        
+</tr>   
+

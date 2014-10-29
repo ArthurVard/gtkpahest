@@ -1,0 +1,88 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<header>
+<p>
+   <%= @room.number %>
+</p>
+<h1><%= @room.name.upcase %> առկա գույքերը</h1>
+<footer>
+<p>
+  <%= @room.note %>
+</p>
+</footer>
+
+</header>
+
+<br>
+<%= form_for([@room, Item.new], remote: true) do |f| %>
+  <% if @room.items.any? && @room.items.last.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@room.items.last.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @room.items.last.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  
+    <div class="field" style='display: inline'>
+      <strong>Գույք:</strong>
+     
+       <%= f.collection_select(:asset_id, Asset.all, :id, :name, {prompt: "Ընտրե՛ք..."}) %>
+    </div>
+
+    <div class="field" style='display: inline; margin-left: 10px;'>
+      <strong>Քանակ:</strong>
+
+      <%= f.number_field :qanak %>
+    </div>
+<div class="field" style='display: inline; margin-left: 10px;'>
+      <strong>Վիճակ:</strong>
+
+      <%= f.collection_select(:state_id, State.all, :id, :name, default: 2) %>
+    </div>
+
+    <div class="actions" style='display: inline; margin-left: 20px;'>
+      <%= f.submit 'Ավելացնել', class: "btn btn-primary"%>
+    </div>
+ 
+<% end %>
+<br>
+<br>
+ <table id="items" class="table  table-hover">
+  <thead>
+    <tr>
+      <th>Գույք</th>
+      <th>Քանակ</th>
+      <th>Վիճակ</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @room.items.each do |item| %>
+      <tr  id='item_<%= item.id %>'>
+        
+        <td><%= item.asset.name %></td>
+        <td><%= item.qanak %></td>
+        <td><%= item.state.name %></td>
+        
+        
+        <td><%= link_to 'Խմբագրել', edit_room_item_path(@room, item), class: "btn btn-default" %></td>
+        <td><%= link_to 'Ջնջել', [@room,item], remote: true, method: :delete, data: { confirm: 'Վահե՛, լավ մտածի...' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+

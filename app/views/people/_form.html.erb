@@ -1,0 +1,66 @@
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Բաժին<br>
+    <%= f.collection_select(:section_id, Section.all, :id, :name, {prompt: "Ընտրե՛ք..."}) %>
+  </div>
+  <div class="field">
+   Պաշտոն<br>
+    
+    <%= f.collection_select(:position_id, Position.all, :id, :name, {prompt: "Ընտրե՛ք..."}) %>
+  </div>
+  <div class="field">
+    Սենյակ<br>
+    
+    <%= f.collection_select(:room_id, Room.all, :id, :name, {prompt: "Ընտրե՛ք..."}) %>
+
+  </div>
+  <div  class="field" style='display: inline; margin-left: 0px; '>
+    Անուն:
+    <%= f.text_field :firstName %>
+  </div>
+  <div class="field" style='display: inline; margin-left: 10px;'>
+    Ազգանուն:
+    <%= f.text_field :lastName %>
+  </div>
+  <div class="field" style='display: inline; margin-left: 10px;'>
+    Հայրանուն:
+    <%= f.text_field :thirdName %>
+  </div>
+  <div class="field">
+    Բջջայիններ:<br>
+    <%= f.text_field :cellPhone1 %>
+ <br>
+    <%= f.text_field :cellPhone2 %>
+  </div>
+  <div class="field">
+    Քաղաքային:<br>
+    <%= f.text_field :cityPhone %>
+  </div>
+  <div class="field">
+    email<br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    workemail<br>
+    <%= f.text_field :workemail %>
+  </div>
+  <div class="field">
+    Ծննունդ:<br>
+    <%= f.date_select :bdate, start_year: 1940 %>
+  </div>
+  <div class="actions">
+     <%= f.submit 'Հիշել', class: "btn btn-primary" %>
+  </div>
+<% end %>

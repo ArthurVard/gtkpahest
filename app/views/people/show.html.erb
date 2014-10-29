@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Բաժին:</strong>
+  <%= @person.section.name %>
+</p>
+
+<p>
+  <strong>Պաշտոն:</strong>
+  <%= @person.position.name %>
+</p>
+
+<p>
+  <strong>Սենյակ:</strong>
+  <%= @person.room.name %>
+</p>
+
+<p>
+  <strong>Անուն:</strong>
+  <%= @person.firstName %>
+</p>
+
+<p>
+  <strong>Ազգանուն:</strong>
+  <%= @person.lastName %>
+</p>
+
+<p>
+  <strong>Հայրանուն:</strong>
+  <%= @person.thirdName %>
+</p>
+
+<p>
+  <strong>Բջջային 1:</strong>
+  <%= @person.cellPhone1 %>
+</p>
+
+<p>
+  <strong>Բջջային 2:</strong>
+  <%= @person.cellPhone2 %>
+</p>
+
+<p>
+  <strong>Քաղաքային:</strong>
+  <%= @person.cityPhone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @person.email %>
+</p>
+
+<p>
+  <strong>Workemail:</strong>
+  <%= @person.workemail %>
+</p>
+
+<p>
+  <strong>Ծննունդ:</strong>
+  <%= @person.bdate %>
+</p>
+
+
+<p><strong>Կցված Գույք</strong></p>
+<ul>
+<% @person.items.each do |item| %>
+<li>
+  <%= item.asset.name %>
+  (<%= item.code %>)
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

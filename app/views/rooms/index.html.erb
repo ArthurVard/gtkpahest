@@ -1,0 +1,29 @@
+<h1>Սենյակներ</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Համար</th>
+      <th>Անուն</th>
+      <th>Նշում</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.number %></td>
+        <td><%= room.name %></td>
+        <td><%= room.note %></td>
+        <td><%= link_to 'Գույքագրում', room, class: "btn btn-success" %></td>
+        <td><%= link_to 'Խմբագրել', edit_room_path(room), class: "btn btn-default" %></td>
+        <td><%= link_to 'Ջնջել', room, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Նոր Սենյակ', new_room_path, class: "btn btn-primary"%>

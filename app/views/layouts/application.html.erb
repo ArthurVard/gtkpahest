@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gtkpahest</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<head>
+	
+
+<div class="navbar navbar-default">
+    <div class="container">
+      <!-- <a class="navbar-brand"><img src="../assets/images/logo.jpg" alt="logo" height="34" width="224"></a>-->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/assets">Գույքացուցակ</a></li>
+        <li><a href="/rooms">Սենյակներ</a></li>
+        <li><a href="/rooms/1">Պահեստ</a> </li>
+        <li><a href="/people">Անձնակազմ</a> </li>
+        
+      </ul>
+    </div>
+  </div>
+
+</head>
+
+<%= yield %>
+<footer id='mainfooter'>
+<hr>
+	&copy;  2014
+</footer>
+</body>
+</html>

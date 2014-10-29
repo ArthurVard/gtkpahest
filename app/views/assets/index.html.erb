@@ -1,0 +1,35 @@
+<h1>Գույքացուցակ</h1>
+<br>
+
+<%= link_to 'Նոր Գույք', new_asset_path, class: "btn btn-primary" %>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Անուն</th>
+      <th>Քանակ</th>
+      <th>Մնացորդ</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assets.each do |asset| %>
+      <tr>
+        <td>
+        <div>
+          <%= asset.name %><br>
+          <small style='background-color: darkgray;'><%= asset.note %> </small>
+
+        </div>
+        </td>
+        <td><%= asset.amount %></td>
+        <td><%= asset.items_in_use_count %></td>
+        <td><%= link_to 'Մանրամասն', asset,class: "btn btn-success" %></td>
+        <td><%= link_to 'Խմբագրել', edit_asset_path(asset), class: "btn btn-default" %></td>
+        <td><%= link_to 'Ջնջել', asset, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
