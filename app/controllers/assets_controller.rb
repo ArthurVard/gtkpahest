@@ -1,6 +1,6 @@
 class AssetsController < ApplicationController
   before_action :set_asset, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   # GET /assets
   # GET /assets.json
   def index
