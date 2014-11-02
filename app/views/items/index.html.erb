@@ -1,4 +1,4 @@
-<h1>Listing items of <%= @room_name %></h1>
+<h1>Listing items11 of <%= @room_name.humanize  %></h1>
 
 <table class="table  table-hover">
   <thead>
@@ -11,10 +11,11 @@
   </thead>
 
   <tbody>
-    <% @items.each do |item| %>
+    <% @items.order(:person_id).each do |item| %>
       <tr>
         <td><%= item.room.name %></td>
         <td><%= item.asset.name %></td>
+        <td><%= item.person.firstName %></td>
         <td><%= item.qanak %></td>
         
       </tr>

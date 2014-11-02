@@ -11,6 +11,12 @@ class ItemsController < ApplicationController
       @items = Item.all
       @room_name  = "all items"
     end
+
+    respond_to do |format|
+      format.html
+      format.csv {send_data @items.to_csv(@room.id)}
+      format.xls #{send_data @items.to_csv(@room.id, col_sep: "\t")}
+    end
   end
 
   # GET /items/1
@@ -79,6 +85,6 @@ class ItemsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:room_id, :asset_id, :qanak, :state_id, :code, :person_id, :room_id)
+      params.require(:item).permit(:room_id, :asset_id, :qanak, :state_id, :code, :person_id)
     end
 end
