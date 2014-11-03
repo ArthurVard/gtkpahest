@@ -14,8 +14,8 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv {send_data @items.to_csv(@room.id)}
-      format.xls #{send_data @items.to_csv(@room.id, col_sep: "\t")}
+      format.csv {send_data @items.to_csv(@room.id), filename: @room.name + '.csv'}
+      format.xls #{filename: @room.name + '.xls'}
     end
   end
 

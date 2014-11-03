@@ -1,7 +1,9 @@
 <h1>Անձնակազմ</h1>
 <br>
+<% if user_signed_in? && current_user.admin%>
 <%= link_to 'Նոր աշխատակից', new_person_path, class: "btn btn-primary" %>
 <br>
+<% end %>
 <br>
 <table class="table table-hover">
   <thead>
@@ -30,8 +32,10 @@
         <td><%= person.workemail %></td>
         <td><%= person.bdate %></td>
         <td><%= link_to 'Մանրամասն', person %></td>
+        <% if user_signed_in? && current_user.admin%>
         <td><%= link_to 'Խմբագրել', edit_person_path(person) %></td>
         <td><%= link_to 'Ջնջել', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

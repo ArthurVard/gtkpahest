@@ -1,8 +1,10 @@
 <h1>Գույքացուցակ</h1>
 <br>
 
+<% if user_signed_in? && current_user.admin %>
 <%= link_to 'Նոր Գույք', new_asset_path, class: "btn btn-primary" %>
 <br>
+<% end %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -26,8 +28,10 @@
         <td><%= asset.amount %></td>
         <td><%= asset.items_in_use_count %></td>
         <td><%= link_to 'Մանրամասն', asset,class: "btn btn-success" %></td>
+        <% if user_signed_in? && current_user.admin%>
         <td><%= link_to 'Խմբագրել', edit_asset_path(asset), class: "btn btn-default" %></td>
         <td><%= link_to 'Ջնջել', asset, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

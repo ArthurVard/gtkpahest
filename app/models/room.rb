@@ -10,4 +10,16 @@ class Room < ActiveRecord::Base
   def itemcount(asset_id)
   	items.map{|a| if a.asset_id == asset_id then a.qanak else 0 end}.sum
   end
+
+  def valid_filename
+  	if sanitize_filename(name) 
+  	then sanitize_filename(name) 
+  	else  name 
+  	end
+  end
+
+  protected
+  def sanitize_filename(filename)
+		filename.gsub(/[^0-9A-Za-z.\-]/, '_')
+	end
 end

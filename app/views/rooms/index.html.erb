@@ -1,8 +1,10 @@
 <h1>Սենյակներ</h1>
 <br>
 
+<% if user_signed_in? && current_user.admin%>
 <%= link_to 'Նոր Սենյակ', new_room_path, class: "btn btn-primary"%>
 <br>
+<% end %>
 
 
 <table class="table table-hover">
@@ -21,9 +23,12 @@
         <td><%= room.number %></td>
         <td><%= room.name %></td>
         <td><%= room.note %></td>
+        
         <td><%= link_to 'Գույքագրում', room, class: "btn btn-success" %></td>
+        <% if user_signed_in? && current_user.admin%>
         <td><%= link_to 'Խմբագրել', edit_room_path(room), class: "btn btn-default" %></td>
         <td><%= link_to 'Ջնջել', room, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
